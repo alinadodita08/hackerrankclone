@@ -1,7 +1,10 @@
-// import { useState } from 'react'
+import { useState } from 'react'
 import Editor from '@monaco-editor/react';
+import './App.css'
+
 
 function App() {
+  const [code, setCode] = useState('')
   async function hanleClick() {
     const payload = {
         language: "python",
@@ -9,7 +12,7 @@ function App() {
         files: [
             {
                 name: "hello.ts",
-                content: "print('Alina' * 10)"
+                content: code
             }
         ],
         stdin: "Alina",
@@ -35,8 +38,10 @@ function App() {
   }
   return (
     <>
-      <Editor height="50vh" defaultLanguage="python" defaultValue="// some comment" />
       <button onClick={hanleClick}>Submit</button>
+      <Editor height="50vh" defaultLanguage="python" defaultValue="// some comment" onChange={(value)=>setCode(value ?? "")} />
+      <div className='terminal'></div>
+      
     </>
 
   )

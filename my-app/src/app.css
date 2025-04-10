@@ -1,0 +1,16 @@
+.terminal{
+  background-color: black;
+  height: 40vh;
+
+}
+
+#root{
+  height: 100%;
+  width: 100%;
+
+}
+
+body{
+  height: 100%;
+  width: 100%;
+}
