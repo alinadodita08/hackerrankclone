@@ -5,7 +5,7 @@ import './App.css'
 
 function App() {
   const [code, setCode] = useState('')
-  const [output, setOutput] = useState(['hello','quick','brown','fox'])
+  const [output, setOutput] = useState([''])
   const [error, setError] = useState([''])
 
   async function hanleClick() {
@@ -37,12 +37,12 @@ function App() {
         body: JSON.stringify(payload)
     });
     const data = await res.json();
-    console.log(data);
+    setOutput(data.run.stdout.split('\n'));
   }
   return (
     <>
       <button onClick={hanleClick}>Submit</button>
-      <Editor height="50vh" defaultLanguage="python" defaultValue="// some comment" onChange={(value)=>setCode(value ?? "")} />
+      <Editor height="50vh" defaultLanguage="python" defaultValue="# some comment" onChange={(value)=>setCode(value ?? "")} />
       <div className='terminal'>
         <div className='terminal-header'>Terminal</div>
         <div className='terminal-body'>
