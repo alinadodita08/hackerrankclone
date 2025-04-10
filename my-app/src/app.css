@@ -14,3 +14,16 @@ body{
   height: 100%;
   width: 100%;
 }
+
+.terminal-header {
+  color: white;
+  padding: 0.3rem;
+}
+
+.terminal-body p {
+  color: white;
+  font-family: monospace;
+  font-size: 1rem;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+}

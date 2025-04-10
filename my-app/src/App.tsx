@@ -11,7 +11,7 @@ function App() {
         version: "3.9.4",
         files: [
             {
-                name: "hello.ts",
+                name: "hello.py",
                 content: code
             }
         ],
@@ -40,7 +40,12 @@ function App() {
     <>
       <button onClick={hanleClick}>Submit</button>
       <Editor height="50vh" defaultLanguage="python" defaultValue="// some comment" onChange={(value)=>setCode(value ?? "")} />
-      <div className='terminal'></div>
+      <div className='terminal'>
+        <div className='terminal-header'>Terminal</div>
+        <div className='terminal-body'>
+          <p>>>> Output will be shown here</p>
+        </div>
+      </div>
       
     </>
 
