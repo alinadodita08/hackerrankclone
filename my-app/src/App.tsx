@@ -5,6 +5,9 @@ import './App.css'
 
 function App() {
   const [code, setCode] = useState('')
+  const [output, setOutput] = useState(['hello','quick','brown','fox'])
+  const [error, setError] = useState([''])
+
   async function hanleClick() {
     const payload = {
         language: "python",
@@ -43,7 +46,7 @@ function App() {
       <div className='terminal'>
         <div className='terminal-header'>Terminal</div>
         <div className='terminal-body'>
-          <p>>>> Output will be shown here</p>
+        {output.map((line, index) => ( <p key={index}>{line}</p>))}
         </div>
       </div>
       
