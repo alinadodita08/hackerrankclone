@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Editor from '@monaco-editor/react';
-
+import MyTerminal from './components/terminal';
 import './App.css'
 
 const languages = [
@@ -99,12 +99,14 @@ function App() {
         value={code}
         onChange={(value) => setCode(value ?? "")}
       />
-      <div className='terminal'>
+      <MyTerminal stdout={output} stderr={error} />
+      {/* Optional: Display output in a simple div */}
+      {/* <div className='terminal'>
         <div className='terminal-header'>Terminal</div>
         <div className='terminal-body'>
           {output.map((line, index) => (<p key={index}>{line}</p>))}
         </div>
-      </div>
+      </div> */}
 
     </>
 
