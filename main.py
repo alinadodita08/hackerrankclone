@@ -34,9 +34,9 @@ payload = {
 
 # GET / POST
 headers = {'Content-Type': 'application/json'}
-response = requests.post('http://lk.ominds.ru:2000/api/v2/execute', json=payload, headers=headers)
+# response = requests.post('http://lk.ominds.ru:2000/api/v2/execute', json=payload, headers=headers)
 
-# response = requests.get('http://lk.ominds.ru:2000/api/v2/runtimes')
+response = requests.get('http://lk.ominds.ru:2000/api/v2/runtimes')
 print(response.json())
 # output = 'what is your name?Hello, Alina\n'
 # if response.json()['run']['stdout'] == output: 
