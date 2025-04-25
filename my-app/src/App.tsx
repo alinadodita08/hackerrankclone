@@ -76,6 +76,8 @@ function App() {
     const selectedLanguage = languages.find(lang => lang.language === e.target.value);
     if (selectedLanguage) {
       setLanguage(selectedLanguage);
+      setCode(''); // Clear the code editor when changing language
+      setOutput(['']); // Clear the output when changing language
     }
   }
 
@@ -93,6 +95,7 @@ function App() {
         height="50vh"
         language={language.language}
         defaultValue=''
+        value={code}
         onChange={(value) => setCode(value ?? "")}
       />
       <div className='terminal'>
