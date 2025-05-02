@@ -69,3 +69,13 @@ body{
   justify-content: center;
   align-items: center;
 }
+
+.header{
+  height: 2rem;
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  padding: 1rem;
+  margin-right: 3rem;
+}

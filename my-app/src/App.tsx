@@ -86,14 +86,17 @@ function App() {
 
   return (
     <>
-      <button onClick={hanleClick} className='submit-code'>Submit</button>
-      <select className='language-select' onChange={(e) => handleLanguageChange(e)}>
-        {languages.map((lang, index) => (
-          <option key={index} value={lang.language}>
-            {lang.language} ({lang.version})
-          </option>
-        ))}
-      </select>
+      <div className='header'>
+        <button onClick={hanleClick} className='submit-code'>Submit</button>
+        <select className='language-select' onChange={(e) => handleLanguageChange(e)}>
+          {languages.map((lang, index) => (
+            <option key={index} value={lang.language}>
+              {lang.language} ({lang.version})
+            </option>
+
+          ))}
+        </select>
+      </div>
       <div className='page'>
         <Description />
         <div className='container'>
