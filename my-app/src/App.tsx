@@ -96,6 +96,7 @@ function App() {
         height="50vh"
         language={language.language}
         defaultValue=''
+        theme="vs-dark" // 🎯 This sets the dark theme
         value={code}
         onChange={(value) => setCode(value ?? "")}
       />
