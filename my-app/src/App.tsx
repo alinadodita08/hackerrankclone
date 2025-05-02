@@ -102,7 +102,7 @@ function App() {
             language={language.language}
             defaultValue=''
             theme="vs-dark" // 🎯 This sets the dark theme
-        value={code}
+            value={code}
             onChange={(value) => setCode(value ?? "")}
           />
           <MyTerminal stdout={output} stderr={error} />
