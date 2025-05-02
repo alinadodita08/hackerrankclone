@@ -12,7 +12,9 @@ interface TabPanelProps {
 const TaskContainer = styled(Box)({
   width: '33%',
   height: '100vh',
-  borderRight: '1px solid #e0e0e0',
+  borderRight: '1px solid #444', // Lighter border for dark theme
+  backgroundColor: '#1e1e1e', // Dark background
+  color: '#ffffff', // Default text color to white
 });
 
 function TabPanel(props: TabPanelProps) {
@@ -42,8 +44,21 @@ export const Description: React.FC = () => {
 
   return (
     <TaskContainer>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={selectedTab} onChange={handleTabChange}>
+      <Box sx={{ borderBottom: 1, borderColor: '#444' }}> {/* Lighter border */}
+        <Tabs
+          value={selectedTab}
+          onChange={handleTabChange}
+          textColor="inherit" // Use inherited color (white from TaskContainer)
+          indicatorColor="primary" // Or choose a suitable indicator color like "secondary" or a custom one
+          sx={{
+            '& .MuiTab-root': { // Style for individual tabs
+              color: '#aaa', // Dim color for unselected tabs
+              '&.Mui-selected': {
+                color: '#ffffff', // Bright color for selected tab
+              },
+            },
+          }}
+        >
           <Tab label="Description" />
           <Tab label="Visual Description" />
           <Tab label="Input/Output" />
@@ -51,28 +66,46 @@ export const Description: React.FC = () => {
       </Box>
 
       <TabPanel value={selectedTab} index={0}>
-        <Typography>
+        <Typography sx={{ color: '#eee' }}> {/* Lighter text color */}
           Problem description content goes here...
         </Typography>
       </TabPanel>
 
       <TabPanel value={selectedTab} index={1}>
-        <Typography>
+        <Typography sx={{ color: '#eee' }}> {/* Lighter text color */}
           Visual description content goes here...
         </Typography>
       </TabPanel>
 
       <TabPanel value={selectedTab} index={2}>
         <Box>
-          <Typography variant="h6" gutterBottom>Standard Input</Typography>
+          <Typography variant="h6" gutterBottom sx={{ color: '#eee' }}>Standard Input</Typography>
           <textarea
-            style={{ width: '100%', minHeight: '100px' }}
+            style={{
+              width: '100%',
+              minHeight: '100px',
+              backgroundColor: '#2a2a2a', // Dark background for textarea
+              color: '#eee', // Light text color
+              border: '1px solid #444', // Lighter border
+              padding: '8px',
+              boxSizing: 'border-box',
+              fontFamily: 'monospace', // Optional: Use monospace font
+            }}
             placeholder="Enter input here..."
           />
-          
-          <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>Standard Output</Typography>
+
+          <Typography variant="h6" gutterBottom sx={{ mt: 2, color: '#eee' }}>Standard Output</Typography>
           <textarea
-            style={{ width: '100%', minHeight: '100px' }}
+            style={{
+              width: '100%',
+              minHeight: '100px',
+              backgroundColor: '#2a2a2a', // Dark background for textarea
+              color: '#aaa', // Slightly dimmer text for read-only output
+              border: '1px solid #444', // Lighter border
+              padding: '8px',
+              boxSizing: 'border-box',
+              fontFamily: 'monospace', // Optional: Use monospace font
+            }}
             placeholder="Expected output here..."
             readOnly
           />
