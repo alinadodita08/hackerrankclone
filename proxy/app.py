@@ -1,4 +1,6 @@
 # python -m fastapi dev .\app.py
+#python  -m uvicorn app:app --host 0.0.0.0 --port 8000
+
 from fastapi import FastAPI, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
 import httpx
