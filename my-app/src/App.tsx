@@ -2,6 +2,8 @@ import { useState } from 'react'
 import Editor from '@monaco-editor/react';
 import MyTerminal from './components/terminal';
 import './App.css'
+import Description from './components/description';
+
 
 const languages = [
   { language: 'python', version: '3.9.4', filename: 'main.py' },
@@ -92,14 +94,19 @@ function App() {
           </option>
         ))}
       </select>
-      <Editor
-        height="50vh"
-        language={language.language}
-        defaultValue=''
-        value={code}
-        onChange={(value) => setCode(value ?? "")}
-      />
-      <MyTerminal stdout={output} stderr={error} />
+      <div className='page'>
+        <Description />
+        <div className='container'>
+          <Editor
+            height="50vh"
+            language={language.language}
+            defaultValue=''
+            value={code}
+            onChange={(value) => setCode(value ?? "")}
+          />
+          <MyTerminal stdout={output} stderr={error} />
+        </div>
+      </div>
       {/* Optional: Display output in a simple div */}
       {/* <div className='terminal'>
         <div className='terminal-header'>Terminal</div>
@@ -107,10 +114,10 @@ function App() {
           {output.map((line, index) => (<p key={index}>{line}</p>))}
         </div>
       </div> */}
-
     </>
 
   )
+
 }
 
 export default App
