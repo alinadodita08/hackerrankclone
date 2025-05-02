@@ -2,6 +2,10 @@ import * as React from 'react';
 import { useState } from 'react';
 import { Box, Tabs, Tab, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import "@uiw/react-md-editor/markdown-editor.css";
+import "@uiw/react-markdown-preview/markdown.css";
+import MDEditor from '@uiw/react-md-editor';
+import MarkdownPreview from '@uiw/react-markdown-preview';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -19,12 +23,11 @@ const TaskContainer = styled(Box)({
 
 function TabPanel(props: TabPanelProps) {
   const { children, value, index, ...other } = props;
-
   return (
     <div
-      role="tabpanel"
-      hidden={value !== index}
-      {...other}
+    role="tabpanel"
+    hidden={value !== index}
+    {...other}
     >
       {value === index && (
         <Box sx={{ p: 3 }}>
@@ -37,7 +40,7 @@ function TabPanel(props: TabPanelProps) {
 
 export const Description: React.FC = () => {
   const [selectedTab, setSelectedTab] = useState(0);
-
+  const [value, setValue] = useState("**Hello world!!!**");
   const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
     setSelectedTab(newValue);
   };
@@ -67,13 +70,13 @@ export const Description: React.FC = () => {
 
       <TabPanel value={selectedTab} index={0}>
         <Typography sx={{ color: '#eee' }}> {/* Lighter text color */}
-          Problem description content goes here...
+          <MDEditor value={value} onChange={setValue} />
         </Typography>
       </TabPanel>
 
       <TabPanel value={selectedTab} index={1}>
         <Typography sx={{ color: '#eee' }}> {/* Lighter text color */}
-          Visual description content goes here...
+          <MarkdownPreview source={value} style={{ padding: 16 }} />
         </Typography>
       </TabPanel>
 
